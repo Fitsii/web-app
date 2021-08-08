@@ -1,7 +1,7 @@
 import { Fragment } from 'react'
 import { Popover, Transition } from '@headlessui/react'
 import { MenuIcon, XIcon, } from '@heroicons/react/outline'
-import Link from 'next/link'
+import Link from 'next/Link'
 import Image from 'next/image'
 import Logo from '../../assets/logo.png'
 
@@ -19,14 +19,16 @@ const MainNav = () => {
                     <div className="mx-auto bg-white">
                         <div className="container px-3 mx-auto flex justify-between items-center py-3 md:justify-start md:space-x-10 p-3">
                             <div className="flex justify-start lg:w-0 lg:flex-1 text-center">
-                                <a href="#">
-                                    <span className="sr-only">FITSII</span>
-                                    <Image
-                                        className="h-8 w-auto sm:h-10"
-                                        src={Logo}
-                                        alt=""
-                                    />
-                                </a>
+                                <Link href="/">
+                                    <a>
+                                        <span className="sr-only">FITSII</span>
+                                        <Image
+                                            className="h-8 w-auto sm:h-10"
+                                            src={Logo}
+                                            alt=""
+                                        />
+                                    </a>
+                                </Link>
                             </div>
                             <div className="mr-1 -my-2 md:hidden">
                                 <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
@@ -44,18 +46,18 @@ const MainNav = () => {
                                 ))}
                             </Popover.Group>
                             <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
-                                <Link href='/login'>
+                                <Link href="/login">
                                     <a
-                                        className="bg-white text-gray-700 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150"
+                                        className="text-base whitespace-nowrap text-xs items-center justify-center px-4 py-2 border border-transparent rounded shadow font-medium text-black hover:shadow-md bg-white  hover:bg-gray-100 "
                                     >
-                                        login
+                                        Login
                                     </a>
                                 </Link>
                                 <Link href="/signup">
                                     <a
-                                        className="ml-2 whitespace-nowrap text-xs items-center justify-center px-4 py-2 border border-transparent rounded shadow-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 hover:text-gray-200"
+                                        className="text-base ml-2 whitespace-nowrap text-xs items-center justify-center px-4 py-2 border border-transparent rounded shadow-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 hover:text-gray-200"
                                     >
-                                        Sign up
+                                        Sign Up
                                     </a>
                                 </Link>
                             </div>

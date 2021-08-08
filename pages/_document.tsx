@@ -6,8 +6,7 @@ class MyDocument extends Document {
         return (
             <Html lang="en">
                 <Head></Head>
-                <body className="text-blueGray-700 antialiased">
-                    <div id="page-transition"></div>
+                <body className="antialiased">
                     <Main />
                     <NextScript />
                 </body>

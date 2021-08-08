@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import Meta from './Meta';
 
-import MainNav from '../components/Navbars/MainNav'
-import MainFooter from '../components/Footers/MainFooter'
+import MainNav from './Navbars/MainNav'
+import MainFooter from './Footers/MainFooter'
 
 class Page extends Component {
     render() {
@@ -12,10 +12,10 @@ class Page extends Component {
                 <header>
                     <MainNav />
                 </header>
-                <main className="flex-1">
-                {this.props.children}
+                <main className="flex-1 bg-white">
+                    {this.props.children}
                 </main>
-                <footer>
+                <footer className="bg-gray-100">
                     <MainFooter />
                 </footer>
             </div>

@@ -3,26 +3,14 @@ import 'antd/dist/antd.css';
 import ReactDOM from "react-dom";
 import type { AppProps } from 'next/app'
 import Router from "next/router";
+import NProgress from "nprogress";
 
-import Page from '../app/utils/Page'
-import PageChange from '../app/components/commons/PageChange'
+import Page from '../app/components/Page'
+import '../public/nprogress.css'
 
-Router.events.on("routeChangeStart", (url) => {
-  console.log(`Loading: ${url}`);
-  document.body.classList.add("body-page-transition");
-  ReactDOM.render(
-    <PageChange path={url} />,
-    document.getElementById("page-transition")
-  );
-});
-Router.events.on("routeChangeComplete", () => {
-  ReactDOM.unmountComponentAtNode(document.getElementById("page-transition"));
-  document.body.classList.remove("body-page-transition");
-});
-Router.events.on("routeChangeError", () => {
-  ReactDOM.unmountComponentAtNode(document.getElementById("page-transition"));
-  document.body.classList.remove("body-page-transition");
-});
+Router.events.on("routeChangeStart", () => NProgress.start());
+Router.events.on("routeChangeComplete", () => NProgress.done());
+Router.events.on("routeChangeError", () => NProgress.done());
 
 function MyApp({ Component, pageProps }: AppProps) {
 

@@ -93,7 +93,7 @@ const MainFooter = () => {
                     </div>
                 </div>
             </div>
-            <div className="bg-gray-100">
+            <div className="bg-gray-200">
                 <div className="container mx-auto py-4 px-3 flex flex-wrap flex-col sm:flex-row">
                     <p className="text-gray-500 text-sm text-center sm:text-left">Copyright © 2021 Fitsii LLC.</p>
                     <span className="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start">
