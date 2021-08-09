@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import Meta from './Meta';
+import Meta from '../Meta';
 
-import MainNav from './Navbars/MainNav'
-import MainFooter from './Footers/MainFooter'
+import MainNav from '../Navbars/MainNav'
+import MainFooter from '../Footers/MainFooter'
 
 class Page extends Component {
     render() {

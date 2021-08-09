@@ -48,6 +48,24 @@ export const createTraineeService = (instance: AxiosInstance) => {
                 }
             })
             return response.data
+        },
+
+        getInstituteDetails: async (
+            id: string
+        ): Promise<TraineeServiceResponse> => {
+            const response = await instance.post('/trainee/getInstituteDetail', {
+                "iid": id
+            })
+            return response.data
+        },
+
+        getInstructorDetails: async (
+            id: string
+        ): Promise<TraineeServiceResponse> => {
+            const response = await instance.post('/trainee/getTrainerDetail', {
+                "iid": id
+            })
+            return response.data
         }
 
     }

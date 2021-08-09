@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import HeroSection from '../app/components/pages/Home/HeroSection';
+import HeroBanner from '../app/components/Hero/HeroBanner'
 import ActivityContainer from '../app/components/pages/Home/ActivityContainer'
 import NearbyInstitues from '../app/components/pages/Home/NearbyInstitues'
 import NearbyClasses from '../app/components/pages/Home/NearbyClasses'
@@ -22,7 +22,7 @@ const Home = () => {
   }, [])
   return (
     <>
-      <HeroSection />
+      <HeroBanner title="DISCOVER THE POWER OF TRAINNING" caption="Get more from every workout with customized guideance of personal training" />
       <ActivityContainer />
       <NearbyClasses location={location} />
       <NearbyInstructors location={location} />
