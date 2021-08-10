@@ -1,6 +1,5 @@
 const daisyThemes = require('./app/daisyui.theme')
 module.exports = {
-  purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
@@ -18,7 +17,7 @@ module.exports = {
   },
   plugins: [
     require('daisyui'),
-    // require('tailwindcss'),
+    require('tailwindcss'),
     require('precss'),
     require('autoprefixer')
   ],

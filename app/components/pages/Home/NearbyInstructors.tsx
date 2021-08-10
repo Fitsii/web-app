@@ -11,19 +11,19 @@ interface NearbyInstructorsProps {
 }
 
 const NearbyInstructors: React.FC<NearbyInstructorsProps> = ({ location }) => {
-    const { getNearbyInstructions } = usePublicRoutes()
+    const { getNearbyInstructors } = usePublicRoutes()
     const { longitude, latitude } = location
     const [listArray, setListArray] = useState([]);
 
     const getInstructions = useCallback(async () => {
         try {
-            const response = await getNearbyInstructions(longitude, latitude)
+            const response = await getNearbyInstructors(longitude, latitude)
             setListArray(response.data.slice(0, 8))
         } catch (error) {
             console.log({ error })
         }
         return undefined
-    }, [getNearbyInstructions, latitude, longitude])
+    }, [getNearbyInstructors, latitude, longitude])
 
     useEffect(() => {
         getInstructions()
@@ -31,7 +31,7 @@ const NearbyInstructors: React.FC<NearbyInstructorsProps> = ({ location }) => {
         return () => {
             getInstructions()
         }
-    }, [getNearbyInstructions, getInstructions, latitude, longitude])
+    }, [getInstructions])
 
     return (
         <div className="container px-3 py-6 mt-20 mx-auto">
@@ -39,7 +39,7 @@ const NearbyInstructors: React.FC<NearbyInstructorsProps> = ({ location }) => {
                 <SectionTitle title='NEARBY INSTRUCTORS' />
                 <div className="py-5 mx-auto overflow-hidden">
                     <div className="flex flex-wrap -m-4">
-                        {listArray.map((list, index) => {
+                        {listArray.map((list: any, index) => {
                             return (
                                 <div className="p-4 md:w-1/3 lg:w-1/4 mx-auto md:mx-0" key={index}>
                                     <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">

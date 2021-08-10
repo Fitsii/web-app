@@ -1,29 +1,34 @@
-import React, { useCallback, useEffect, useState } from 'react'
-import Image from 'next/image'
-
-import usePublicRoutes from '../../../hooks/usePublicRoutes'
-import SectionTitle from '../../headers/SectionTitle'
-import { Location } from '../../../types'
 import { CurrencyDollarIcon, LocationMarkerIcon } from '@heroicons/react/outline'
+import Link from 'next/link'
+import React, { useCallback, useEffect, useState } from 'react'
+import HeroBanner from '../app/components/Hero/HeroBanner'
+import usePublicRoutes from '../app/hooks/usePublicRoutes'
+import Layout from '../app/components/layouts/Page'
 
-interface NearbyInstituesProps {
-    location: Location
-}
-
-const NearbyInstitues: React.FC<NearbyInstituesProps> = ({ location }) => {
+const Institutes = () => {
+    const [location, setLocation] = useState({ latitude: 0, longitude: 0 })
     const { getNearbyInstitutes } = usePublicRoutes()
-    const { longitude, latitude } = location
     const [listArray, setListArray] = useState([]);
+
+    useEffect(() => {
+        navigator.geolocation.getCurrentPosition(position => {
+            let location = {
+                latitude: position.coords.latitude,
+                longitude: position.coords.longitude
+            }
+            setLocation(location)
+        })
+    }, [])
 
     const getInstitutes = useCallback(async () => {
         try {
-            const response = await getNearbyInstitutes(longitude, latitude)
-            setListArray(response.data.slice(0, 8))
+            const response = await getNearbyInstitutes(location.longitude, location.latitude)
+            setListArray(response.data)
         } catch (error) {
             console.log({ error })
         }
         return undefined
-    }, [getNearbyInstitutes, latitude, longitude])
+    }, [getNearbyInstitutes, location.latitude, location.longitude])
 
     useEffect(() => {
         getInstitutes()
@@ -31,12 +36,15 @@ const NearbyInstitues: React.FC<NearbyInstituesProps> = ({ location }) => {
         return () => {
             getInstitutes()
         }
-    }, [getNearbyInstitutes, getInstitutes, latitude, longitude])
+    }, [getNearbyInstitutes, getInstitutes])
 
     return (
-        <div className="container px-3 py-6 mt-20 mx-auto">
-            <div className="flex flex-col justify-between">
-                <SectionTitle title='NEARBY INSTITUTES' />
+        <>
+            <HeroBanner
+                title="Institutes"
+                caption="Get more from every workout with customized guideance of personal training"
+            />
+            <div className="container px-3 py-4 mx-auto">
                 <div className="py-5 mx-auto overflow-hidden">
                     <div className="flex flex-wrap -m-4">
                         {listArray.map((list: any, index) => {
@@ -55,12 +63,14 @@ const NearbyInstitues: React.FC<NearbyInstituesProps> = ({ location }) => {
                                                 <span className="text-gray-700 mr-3 inline-flex items-center leading-none text-sm pr-3 py-1 border-gray-200">
                                                     <LocationMarkerIcon className="h-4 w-4" aria-hidden="true" />{list.distance && list.distance.toFixed(2) || 0} km
                                                 </span>
-                                                <a className="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0 lg:ml-auto md:ml-0 ml-auto ">More Details
-                                                    <svg className="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                                        <path d="M5 12h14"></path>
-                                                        <path d="M12 5l7 7-7 7"></path>
-                                                    </svg>
-                                                </a>
+                                                <Link href={`/institutes/${list.uid}`}>
+                                                    <a className="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0 lg:ml-auto md:ml-0 ml-auto ">More Details
+                                                        <svg className="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                                                            <path d="M5 12h14"></path>
+                                                            <path d="M12 5l7 7-7 7"></path>
+                                                        </svg>
+                                                    </a>
+                                                </Link>
 
                                             </div>
                                         </div>
@@ -72,10 +82,15 @@ const NearbyInstitues: React.FC<NearbyInstituesProps> = ({ location }) => {
                     </div>
                 </div>
             </div>
-
-        </div>
+        </>
     )
 }
 
-export default NearbyInstitues
+// eslint-disable-next-line 
+Institutes.getLayout = (page: any) => (
+    <Layout>{page}</Layout>
+)
 
+Institutes.layout = Layout;
+
+export default Institutes

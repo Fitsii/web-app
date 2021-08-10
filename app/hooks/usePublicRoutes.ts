@@ -5,24 +5,31 @@ const usePublicRoutes = () => {
 
     const getNearbyClasses = useCallback(async (longitude?: number, latitude?: number) => {
         const results = await api.trainee.getClasses(longitude, latitude)
-        console.log({ results })
         return results
     }, [])
 
-    const getNearbyInstructions = useCallback(async (longitude?: number, latitude?: number) => {
+    const getNearbyInstructors = useCallback(async (longitude?: number, latitude?: number) => {
         const results = await api.trainee.getInstructors(longitude, latitude)
-        console.log({ results })
         return results
     }, [])
 
     const getNearbyInstitutes = useCallback(async (longitude?: number, latitude?: number) => {
         const results = await api.trainee.getInstitutes(longitude, latitude)
-        console.log({ results })
+        return results
+    }, [])
+
+    const getInstituteDetails = useCallback(async (id: any) => {
+        const results = await api.trainee.getInstituteDetails(id)
+        return results
+    }, [])
+
+    const getInstructorDetails = useCallback(async (id: string) => {
+        const results = await api.trainee.getInstructorDetails(id)
         return results
     }, [])
 
     return {
-        getNearbyClasses, getNearbyInstructions, getNearbyInstitutes
+        getNearbyClasses, getNearbyInstructors, getNearbyInstitutes, getInstituteDetails, getInstructorDetails
     }
 
 }
