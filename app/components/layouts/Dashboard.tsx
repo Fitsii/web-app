@@ -1,13 +1,15 @@
 import React from "react";
+import Meta from '../Meta';
 
 // components
 import AdminNavbar from "../Navbars/AdminNavbar";
-import Sidebar from "../Sidebar/Sidebar.js";
+import Sidebar from "../Sidebar/Sidebar";
 
 
-export default function Dashboard({ children }) {
+const Dashboard: React.FC<{}> = ({ children }) => {
     return (
         <>
+            <Meta />
             <Sidebar />
             <div className="relative md:ml-64 bg-blueGray-100">
                 <AdminNavbar />
@@ -19,3 +21,5 @@ export default function Dashboard({ children }) {
         </>
     );
 }
+
+export default Dashboard

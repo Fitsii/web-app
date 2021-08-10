@@ -109,7 +109,8 @@ const Login = () => {
     )
 }
 
-Login.getLayout = (page: any) => (
+// eslint-disable-next-line 
+Login.getLayout = (page: boolean | React.ReactChild | React.ReactFragment | React.ReactPortal | null | undefined) => (
     <Layout>{page}</Layout>
 )
 

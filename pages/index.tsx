@@ -6,6 +6,8 @@ import NearbyInstitues from '../app/components/pages/Home/NearbyInstitues'
 import NearbyClasses from '../app/components/pages/Home/NearbyClasses'
 import NearbyInstructors from '../app/components/pages/Home/NearbyInstructors'
 
+import Layout from '../app/components/layouts/Page'
+
 
 const Home = () => {
 
@@ -30,5 +32,12 @@ const Home = () => {
     </>
   )
 }
+
+// eslint-disable-next-line 
+Home.getLayout = (page: any) => (
+  <Layout>{page}</Layout>
+)
+
+Home.layout = Layout;
 
 export default Home

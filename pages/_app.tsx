@@ -1,7 +1,10 @@
 import '../app/styles/app.scss'
 import 'antd/dist/antd.css';
+
 import React from 'react';
-import type { AppProps } from 'next/app'
+import { AppContext, AppInitialProps, AppLayoutProps } from 'next/app';
+import type { NextComponentType } from 'next';
+import { ReactNode } from 'react';
 import Router from "next/router";
 import NProgress from "nprogress";
 
@@ -11,13 +14,13 @@ Router.events.on("routeChangeStart", () => NProgress.start());
 Router.events.on("routeChangeComplete", () => NProgress.done());
 Router.events.on("routeChangeError", () => NProgress.done());
 
-function MyApp({ Component, pageProps }: AppProps) {
 
-  const getLayout = Component.getLayout || ((page) => page)
+const MyApp: NextComponentType<AppContext, AppInitialProps, AppLayoutProps> = ({
+  Component,
+  pageProps,
+}: AppLayoutProps) => {
+  const getLayout = Component.getLayout || ((page: ReactNode) => page);
+  return getLayout(<Component {...pageProps} />);
+};
 
-  return getLayout(
-    <Component {...pageProps} />
-  )
-}
-
-export default MyApp
+export default MyApp;

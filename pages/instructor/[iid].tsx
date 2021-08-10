@@ -11,7 +11,7 @@ import Loader from '../../app/components/commons/Loader';
 const Institute = () => {
     const router = useRouter();
     const { iid } = router.query;
-    const [userData, setUserData] = useState([])
+    const [userData, setUserData] = useState<any>([])
     const [loading, setLoading] = useState(true)
 
     const { getInstituteDetails } = usePublicRoutes()
@@ -72,16 +72,16 @@ const Institute = () => {
                                     <TitleHeader title="Gallery" />
                                     <div className="space-x-4 carousel carousel-center">
                                         <div className="carousel-item">
-                                            <img src="https://picsum.photos/id/500/256/144" className="rounded-box" />
+                                            <img src="https://picsum.photos/id/500/256/144" className="rounded-box" alt=""/>
                                         </div>
                                         <div className="carousel-item">
-                                            <img src="https://picsum.photos/id/501/256/144" className="rounded-box" />
+                                            <img src="https://picsum.photos/id/501/256/144" className="rounded-box" alt=""/>
                                         </div>
                                         <div className="carousel-item">
-                                            <img src="https://picsum.photos/id/502/256/144" className="rounded-box" />
+                                            <img src="https://picsum.photos/id/502/256/144" className="rounded-box" alt=""/>
                                         </div>
                                         <div className="carousel-item">
-                                            <img src="https://picsum.photos/id/503/256/144" className="rounded-box" />
+                                            <img src="https://picsum.photos/id/503/256/144" className="rounded-box" alt=""/>
                                         </div>
                                     </div>
                                 </div>
@@ -90,16 +90,16 @@ const Institute = () => {
                                     <TitleHeader title="Certificates" />
                                     <div className="space-x-4 carousel carousel-center">
                                         <div className="carousel-item">
-                                            <img src="https://picsum.photos/id/500/256/144" className="rounded-box" />
+                                            <img src="https://picsum.photos/id/500/256/144" className="rounded-box" alt=""/>
                                         </div>
                                         <div className="carousel-item">
-                                            <img src="https://picsum.photos/id/501/256/144" className="rounded-box" />
+                                            <img src="https://picsum.photos/id/501/256/144" className="rounded-box" alt=""/>
                                         </div>
                                         <div className="carousel-item">
-                                            <img src="https://picsum.photos/id/502/256/144" className="rounded-box" />
+                                            <img src="https://picsum.photos/id/502/256/144" className="rounded-box" alt=""/>
                                         </div>
                                         <div className="carousel-item">
-                                            <img src="https://picsum.photos/id/503/256/144" className="rounded-box" />
+                                            <img src="https://picsum.photos/id/503/256/144" className="rounded-box" alt=""/>
                                         </div>
                                     </div>
                                 </div>

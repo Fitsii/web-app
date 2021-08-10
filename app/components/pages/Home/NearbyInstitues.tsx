@@ -39,7 +39,7 @@ const NearbyInstitues: React.FC<NearbyInstituesProps> = ({ location }) => {
                 <SectionTitle title='NEARBY INSTITUTES' />
                 <div className="py-5 mx-auto overflow-hidden">
                     <div className="flex flex-wrap -m-4">
-                        {listArray.map((list, index) => {
+                        {listArray.map((list: any, index) => {
                             return (
                                 <div className="p-4 md:w-1/3 lg:w-1/4 mx-auto md:mx-0" key={index}>
                                     <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">

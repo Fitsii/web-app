@@ -30,7 +30,7 @@ const ActivityContainer = () => {
                     {ActivityData.map((activity, index) => {
                         return (
                             <div className="flex relative justify-center text-2xl rounded-xl p-6 bg-gray-100 h-80" key={index}>
-                                <img alt="gallery" className="absolute inset-0 w-full h-full object-cover object-center rounded-xl" src={activity.img} alt={activity.name} />
+                                <img className="absolute inset-0 w-full h-full object-cover object-center rounded-xl" src={activity.img} alt={activity.name} />
                                 <p className="absolute bottom-0 uppercase text-white font-bold">{activity.name}</p>
                             </div>
                         )

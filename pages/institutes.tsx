@@ -3,6 +3,7 @@ import Link from 'next/Link'
 import React, { useCallback, useEffect, useState } from 'react'
 import HeroBanner from '../app/components/Hero/HeroBanner'
 import usePublicRoutes from '../app/hooks/usePublicRoutes'
+import Layout from '../app/components/layouts/Page'
 
 const Institutes = () => {
     const [location, setLocation] = useState({ latitude: 0, longitude: 0 })
@@ -37,7 +38,6 @@ const Institutes = () => {
         }
     }, [getNearbyInstitutes, getInstitutes])
 
-
     return (
         <>
             <HeroBanner
@@ -47,8 +47,7 @@ const Institutes = () => {
             <div className="container px-3 py-4 mx-auto">
                 <div className="py-5 mx-auto overflow-hidden">
                     <div className="flex flex-wrap -m-4">
-                        {listArray.map((list, index) => {
-                            console.log({ list })
+                        {listArray.map((list: any, index) => {
                             return (
                                 <div className="p-4 md:w-1/3 lg:w-1/4 mx-auto md:mx-0" key={index}>
                                     <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
@@ -66,7 +65,7 @@ const Institutes = () => {
                                                 </span>
                                                 <Link href={`/institutes/${list.uid}`}>
                                                     <a className="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0 lg:ml-auto md:ml-0 ml-auto ">More Details
-                                                        <svg className="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                        <svg className="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
                                                             <path d="M5 12h14"></path>
                                                             <path d="M12 5l7 7-7 7"></path>
                                                         </svg>
@@ -86,5 +85,12 @@ const Institutes = () => {
         </>
     )
 }
+
+// eslint-disable-next-line 
+Institutes.getLayout = (page: any) => (
+    <Layout>{page}</Layout>
+)
+
+Institutes.layout = Layout;
 
 export default Institutes

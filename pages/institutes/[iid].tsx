@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { useRouter } from 'next/router';
 import { Anchor, Image as AntImage } from 'antd';
+import Layout from '../../app/components/layouts/Page'
 
 import HeroBanner from '../../app/components/Hero/HeroBanner';
 import usePublicRoutes from '../../app/hooks/usePublicRoutes';
@@ -14,11 +15,11 @@ const { Link } = Anchor;
 const Institute = () => {
     const router = useRouter();
     const { iid } = router.query;
-    const [userData, setUserData] = useState([])
+    const [userData, setUserData] = useState<any>([])
     const [slideIndex, setSlideIndex] = useState(0);
     const slider = useRef();
 
-    const [targetOffset, setTargetOffset] = useState<number>(null);
+    const [targetOffset, setTargetOffset] = useState<number>(0);
 
     useEffect(() => {
         setTargetOffset(window.innerHeight / 2);
@@ -76,16 +77,16 @@ const Institute = () => {
                             <TitleHeader title="Gallery" />
                             <div className="space-x-4 carousel carousel-center">
                                 <div className="carousel-item">
-                                    <img src="https://picsum.photos/id/500/256/144" className="rounded-box" />
+                                    <img src="https://picsum.photos/id/500/256/144" className="rounded-box" alt="" />
                                 </div>
                                 <div className="carousel-item">
-                                    <img src="https://picsum.photos/id/501/256/144" className="rounded-box" />
+                                    <img src="https://picsum.photos/id/501/256/144" className="rounded-box" alt="" />
                                 </div>
                                 <div className="carousel-item">
-                                    <img src="https://picsum.photos/id/502/256/144" className="rounded-box" />
+                                    <img src="https://picsum.photos/id/502/256/144" className="rounded-box" alt="" />
                                 </div>
                                 <div className="carousel-item">
-                                    <img src="https://picsum.photos/id/503/256/144" className="rounded-box" />
+                                    <img src="https://picsum.photos/id/503/256/144" className="rounded-box" alt="" />
                                 </div>
                             </div>
                         </div>
@@ -94,16 +95,16 @@ const Institute = () => {
                             <TitleHeader title="Certificates" />
                             <div className="space-x-4 carousel carousel-center">
                                 <div className="carousel-item">
-                                    <img src="https://picsum.photos/id/500/256/144" className="rounded-box" />
+                                    <img src="https://picsum.photos/id/500/256/144" className="rounded-box" alt="" />
                                 </div>
                                 <div className="carousel-item">
-                                    <img src="https://picsum.photos/id/501/256/144" className="rounded-box" />
+                                    <img src="https://picsum.photos/id/501/256/144" className="rounded-box" alt="" />
                                 </div>
                                 <div className="carousel-item">
-                                    <img src="https://picsum.photos/id/502/256/144" className="rounded-box" />
+                                    <img src="https://picsum.photos/id/502/256/144" className="rounded-box" alt="" />
                                 </div>
                                 <div className="carousel-item">
-                                    <img src="https://picsum.photos/id/503/256/144" className="rounded-box" />
+                                    <img src="https://picsum.photos/id/503/256/144" className="rounded-box" alt="" />
                                 </div>
                             </div>
                         </div>
@@ -130,7 +131,7 @@ const Institute = () => {
                                                     <CurrencyDollarIcon className="h-4 w-4" aria-hidden="true" />3
                                                 </span>
                                                 <a className="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0 lg:ml-auto md:ml-0 ml-auto ">More Details
-                                                    <svg className="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                    <svg className="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
                                                         <path d="M5 12h14"></path>
                                                         <path d="M12 5l7 7-7 7"></path>
                                                     </svg>
@@ -148,5 +149,12 @@ const Institute = () => {
         </>
     )
 }
+
+// eslint-disable-next-line 
+Institute.getLayout = (page: any) => (
+    <Layout>{page}</Layout>
+)
+
+Institute.layout = Layout;
 
 export default Institute

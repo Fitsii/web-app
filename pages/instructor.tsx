@@ -1,12 +1,13 @@
 import { CurrencyDollarIcon, LocationMarkerIcon } from '@heroicons/react/outline'
 import Link from 'next/Link'
 import React, { useCallback, useEffect, useState } from 'react'
+import Layout from '../app/components/layouts/Page'
 import HeroBanner from '../app/components/Hero/HeroBanner'
 import usePublicRoutes from '../app/hooks/usePublicRoutes'
 
-const Institutes = () => {
+const Instructor = () => {
     const [location, setLocation] = useState({ latitude: 0, longitude: 0 })
-    const { getNearbyInstructor } = usePublicRoutes()
+    const { getNearbyInstructors } = usePublicRoutes()
     const [listArray, setListArray] = useState([]);
 
     useEffect(() => {
@@ -21,13 +22,13 @@ const Institutes = () => {
 
     const getInstructor = useCallback(async () => {
         try {
-            const response = await getNearbyInstructor(location.longitude, location.latitude)
+            const response = await getNearbyInstructors(location.longitude, location.latitude)
             setListArray(response.data)
         } catch (error) {
             console.log({ error })
         }
         return undefined
-    }, [getNearbyInstructor, location.latitude, location.longitude])
+    }, [getNearbyInstructors, location.latitude, location.longitude])
 
     useEffect(() => {
         getInstructor()
@@ -47,7 +48,7 @@ const Institutes = () => {
             <div className="container px-3 py-4 mx-auto">
                 <div className="py-5 mx-auto overflow-hidden">
                     <div className="flex flex-wrap -m-4">
-                        {listArray.map((list, index) => {
+                        {listArray.map((list: any, index) => {
                             return (
                                 <div className="p-4 md:w-1/3 lg:w-1/4 mx-auto md:mx-0" key={index}>
                                     <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
@@ -63,7 +64,7 @@ const Institutes = () => {
                                                 </span>
                                                 <Link href={`/instructor/${list.uid}`}>
                                                     <a className="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0 lg:ml-auto md:ml-0 ml-auto ">More Details
-                                                        <svg className="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                        <svg className="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
                                                             <path d="M5 12h14"></path>
                                                             <path d="M12 5l7 7-7 7"></path>
                                                         </svg>
@@ -83,4 +84,11 @@ const Institutes = () => {
     )
 }
 
-export default Institutes
+// eslint-disable-next-line 
+Instructor.getLayout = (page: any) => (
+    <Layout>{page}</Layout>
+)
+
+Instructor.layout = Layout;
+
+export default Instructor
