@@ -17,12 +17,9 @@ module.exports = {
     extend: {},
   },
   plugins: [
-    require('daisyui'),
-    // require('tailwindcss'),
+    // require('daisyui'),
+    require('tailwindcss'),
     require('precss'),
     require('autoprefixer')
-  ],
-  daisyui: {
-    themes: daisyThemes,
-  },
+  ]
 }

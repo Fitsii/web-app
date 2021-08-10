@@ -6,9 +6,10 @@ import { LocationMarkerIcon } from '@heroicons/react/outline';
 import { DatePicker, Input, Spin, TimePicker } from 'antd';
 import TitleHeader from '../../app/components/headers/TitleHeader';
 import Loader from '../../app/components/commons/Loader';
+import Layout from '../../app/components/layouts/Page'
 
 
-const Institute = () => {
+const Instructor = () => {
     const router = useRouter();
     const { iid } = router.query;
     const [userData, setUserData] = useState<any>([])
@@ -72,16 +73,16 @@ const Institute = () => {
                                     <TitleHeader title="Gallery" />
                                     <div className="space-x-4 carousel carousel-center">
                                         <div className="carousel-item">
-                                            <img src="https://picsum.photos/id/500/256/144" className="rounded-box" alt=""/>
+                                            <img src="https://picsum.photos/id/500/256/144" className="rounded-box" alt="" />
                                         </div>
                                         <div className="carousel-item">
-                                            <img src="https://picsum.photos/id/501/256/144" className="rounded-box" alt=""/>
+                                            <img src="https://picsum.photos/id/501/256/144" className="rounded-box" alt="" />
                                         </div>
                                         <div className="carousel-item">
-                                            <img src="https://picsum.photos/id/502/256/144" className="rounded-box" alt=""/>
+                                            <img src="https://picsum.photos/id/502/256/144" className="rounded-box" alt="" />
                                         </div>
                                         <div className="carousel-item">
-                                            <img src="https://picsum.photos/id/503/256/144" className="rounded-box" alt=""/>
+                                            <img src="https://picsum.photos/id/503/256/144" className="rounded-box" alt="" />
                                         </div>
                                     </div>
                                 </div>
@@ -90,16 +91,16 @@ const Institute = () => {
                                     <TitleHeader title="Certificates" />
                                     <div className="space-x-4 carousel carousel-center">
                                         <div className="carousel-item">
-                                            <img src="https://picsum.photos/id/500/256/144" className="rounded-box" alt=""/>
+                                            <img src="https://picsum.photos/id/500/256/144" className="rounded-box" alt="" />
                                         </div>
                                         <div className="carousel-item">
-                                            <img src="https://picsum.photos/id/501/256/144" className="rounded-box" alt=""/>
+                                            <img src="https://picsum.photos/id/501/256/144" className="rounded-box" alt="" />
                                         </div>
                                         <div className="carousel-item">
-                                            <img src="https://picsum.photos/id/502/256/144" className="rounded-box" alt=""/>
+                                            <img src="https://picsum.photos/id/502/256/144" className="rounded-box" alt="" />
                                         </div>
                                         <div className="carousel-item">
-                                            <img src="https://picsum.photos/id/503/256/144" className="rounded-box" alt=""/>
+                                            <img src="https://picsum.photos/id/503/256/144" className="rounded-box" alt="" />
                                         </div>
                                     </div>
                                 </div>
@@ -161,4 +162,11 @@ const Institute = () => {
     )
 }
 
-export default Institute
+// eslint-disable-next-line 
+Instructor.getLayout = (page: any) => (
+    <Layout>{page}</Layout>
+)
+
+Instructor.layout = Layout;
+
+export default Instructor
