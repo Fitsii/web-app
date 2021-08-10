@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
 
 import { LockClosedIcon } from '@heroicons/react/solid'
-import Link from 'next/Link'
+import Link from 'next/link'
 import { useForm } from 'react-hook-form'
 import Layout from '../app/components/layouts/Page'
 

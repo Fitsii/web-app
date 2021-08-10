@@ -1,5 +1,5 @@
 import { CurrencyDollarIcon, LocationMarkerIcon } from '@heroicons/react/outline'
-import Link from 'next/Link'
+import Link from 'next/link'
 import React, { useCallback, useEffect, useState } from 'react'
 import HeroBanner from '../app/components/Hero/HeroBanner'
 import usePublicRoutes from '../app/hooks/usePublicRoutes'
