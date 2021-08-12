@@ -26,12 +26,12 @@ const ActivityContainer = () => {
         <div className="container px-3 py-4 mx-auto">
             <SectionTitle title='Discover Activity' />
             <div className="container mx-auto mt-8">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div className="grid gap-2 md:gap-4 lg:gap-6 grid-cols-4 ">
                     {ActivityData.map((activity, index) => {
                         return (
-                            <div className="flex relative justify-center text-2xl rounded-xl p-6 bg-gray-100 h-80" key={index}>
-                                <img className="absolute inset-0 w-full h-full object-cover object-center rounded-xl" src={activity.img} alt={activity.name} />
-                                <p className="absolute bottom-0 uppercase text-white font-bold">{activity.name}</p>
+                            <div className="flex relative justify-center text-2xl rounded-xl p-6 bg-gray-100 h-20 md:h-40 lg:h-80" key={index}>
+                                <img className="absolute inset-0 w-full h-full object-cover object-center rounded-lg" src={activity.img} alt={activity.name} />
+                                <p className="absolute bottom-0 uppercase text-white font-bold justify-center text-sm md:text-2xl ">{activity.name}</p>
                             </div>
                         )
                     })}

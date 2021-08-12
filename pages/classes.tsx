@@ -4,12 +4,12 @@ import React, { useCallback, useEffect, useState } from 'react'
 import Layout from '../app/components/layouts/Page'
 import HeroBanner from '../app/components/Hero/HeroBanner'
 import usePublicRoutes from '../app/hooks/usePublicRoutes'
-import InstructorsCard from '../app/components/instructors/InstructorsCard'
+import ClassesCard from '../app/components/classes/ClassesCard'
 
-const Instructor = () => {
+const Classes = () => {
     const [location, setLocation] = useState({ latitude: 0, longitude: 0 })
-    const { getNearbyInstructors } = usePublicRoutes()
-    const [InstructorsArray, setInstructorsArray] = useState([]);
+    const { getNearbyClasses } = usePublicRoutes()
+    const [ClassesArray, setClassesArray] = useState([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -22,40 +22,40 @@ const Instructor = () => {
         })
     }, [])
 
-    const getInstructor = useCallback(async () => {
+    const getClasses = useCallback(async () => {
         try {
-            const response = await getNearbyInstructors(location.longitude, location.latitude)
+            const response = await getNearbyClasses(location.longitude, location.latitude)
             if (response) {
                 setLoading(false)
-                setInstructorsArray(response.data)
+                setClassesArray(response.data)
             }
         } catch (error) {
             setLoading(false)
             console.log({ error })
         }
         return undefined
-    }, [getNearbyInstructors, location.latitude, location.longitude])
+    }, [getNearbyClasses, location.latitude, location.longitude])
 
     useEffect(() => {
-        getInstructor()
+        getClasses()
 
         return () => {
-            getInstructor()
+            getClasses()
         }
-    }, [getInstructor])
+    }, [getClasses])
 
 
     return (
         <>
             <HeroBanner
-                title="Instructors"
+                title="Classes"
                 caption="Get more from every workout with customized guideance of personal training"
             />
             <div className="container px-3 py-4 mx-auto">
                 <div className="py-5 mx-auto overflow-hidden">
                     {loading ? (<div>loading</div>) : (
                         <div className="flex flex-wrap -m-4">
-                            <InstructorsCard instructors={InstructorsArray} />
+                            <ClassesCard classes={ClassesArray} />
                         </div>
                     )}
                 </div>
@@ -65,10 +65,10 @@ const Instructor = () => {
 }
 
 // eslint-disable-next-line 
-Instructor.getLayout = (page: any) => (
+Classes.getLayout = (page: any) => (
     <Layout>{page}</Layout>
 )
 
-Instructor.layout = Layout;
+Classes.layout = Layout;
 
-export default Instructor
+export default Classes
