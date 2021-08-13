@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from "react";
-
 interface SidebarProps {
     sidebarOpen: boolean
     setSidebarOpen: any
@@ -14,8 +13,9 @@ const Sidebar: React.FC<SidebarProps> = ({
     const sidebar = useRef(null);
 
     useEffect(() => {
-        const clickHandler = ({ target }) => {
+        const clickHandler = ({ target }: any) => {
             if (!sidebar.current || !trigger.current) return;
+            // @ts-ignore: Object is possibly 'null'
             if (!sidebarOpen || sidebar.current.contains(target) || trigger.current.contains(target)) return;
             setSidebarOpen(false);
         };
@@ -24,7 +24,7 @@ const Sidebar: React.FC<SidebarProps> = ({
     });
 
     useEffect(() => {
-        const keyHandler = ({ keyCode }) => {
+        const keyHandler = ({ keyCode }: any) => {
             if (!sidebarOpen || keyCode !== 27) return;
             setSidebarOpen(false);
         };
