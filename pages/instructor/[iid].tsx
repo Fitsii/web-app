@@ -5,7 +5,7 @@ import usePublicRoutes from '../../app/hooks/usePublicRoutes';
 import { LocationMarkerIcon } from '@heroicons/react/outline';
 import { DatePicker, Input, Spin, TimePicker } from 'antd';
 import TitleHeader from '../../app/components/headers/TitleHeader';
-import Loader from '../../app/components/commons/Loader';
+import Loader from '../../app/components/base/Loader';
 import Layout from '../../app/components/layouts/Page'
 
 
